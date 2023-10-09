@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
 @Data
 @NoArgsConstructor
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class UserNotFoundException extends RuntimeException  implements Serializable {
+public class UserNotFoundException extends RuntimeException implements Serializable {
     private String message;
     private int code;
     private HttpStatus status;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
 
-
-
+    public UserNotFoundException(String message) {
+        this.message = message;
+    }
 }
