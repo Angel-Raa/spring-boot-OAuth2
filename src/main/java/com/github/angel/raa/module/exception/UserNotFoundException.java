@@ -22,7 +22,10 @@ public class UserNotFoundException extends RuntimeException implements Serializa
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
 
-    public UserNotFoundException(String message) {
+    public UserNotFoundException(String message, int code, HttpStatus status, LocalDateTime timestamp) {
         this.message = message;
+        this.code = code;
+        this.status = status;
+        this.timestamp = timestamp;
     }
 }
