@@ -24,21 +24,21 @@ public class ClientApp implements Serializable {
     private String clientId;
     @Column(name = "client_secret")
     private String clientSecret;
-    @Column(name = "client_authentication_methods")
+    @Column(name = "client_app_client_authentication_methods")
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> clientAuthenticationMethods;
-    @Column(name = "authorization_grant_type")
+    @Column(name = "client_app_authorization_grant_types")
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> authorizationGrantTypes;
-    @Column(name = "redirect_uris")
+    @Column(name = "client_app_redirect_uris")
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> redirectUris;
-    @Column(name = "scopes")
+    @Column(name = " client_app_scopes")
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> scopes;
-    @Column(name = "duration_minutes")
+    @Column(name = "duration_in_minutes")
     private int durationMill;
-    @Column(name = "request_proof_key")
+    @Column(name = "required_proof_key")
     private boolean requiredProofKey;
 
 
