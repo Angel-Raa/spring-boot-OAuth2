@@ -25,6 +25,7 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
 @EnableWebSecurity
+@Configuration
 public class AuthorizationSecurityConfiguration {
     @Bean
     @Order(1)
@@ -51,7 +52,8 @@ public class AuthorizationSecurityConfiguration {
             auth.requestMatchers("/login").permitAll();
             auth.anyRequest().authenticated();
         });
-        http.formLogin(Customizer.withDefaults());
+        //http.formLogin(Customizer.withDefaults());
+        http.formLogin((login) -> login.loginPage("/login").permitAll());
         return http.build();
     }
 
@@ -77,7 +79,7 @@ public class AuthorizationSecurityConfiguration {
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
         return AuthorizationServerSettings.builder()
-                .issuer("http://localhost:9090")
+                .issuer("http://localhost:9090/authorization-server")
                 .build();
     }
     private static KeyPair generateRsaKey() {
